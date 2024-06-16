@@ -17,7 +17,7 @@ else
 fi
 
 #installing cython
-pip install Cython
+python3.8 -m pip install Cython
 
 #download fairseq repo
 #Check if fairseq-build directory does not exist
@@ -26,7 +26,7 @@ then
     git clone --recursive https://github.com/pytorch/fairseq
     cd fairseq/
     git checkout v0.10.0
-    python setup.py sdist bdist_wheel
+    python3.8 setup.py sdist bdist_wheel
     cd ..
     mkdir fairseq-build
     cp fairseq/dist/*.tar.gz fairseq-build/
@@ -35,10 +35,10 @@ fi
 file_name=$(ls fairseq-build/)
 
 #create requirements.txt file
-python requirements_script.py $file_name
+python3.8 requirements_script.py $file_name
 
 #script to create setup_config.json file
-python setup_config_script.py $model_name
+python3.8 setup_config_script.py $model_name
 
 #Check if a model_store directory does not exist
 if [ ! -d "model_store" ] 
